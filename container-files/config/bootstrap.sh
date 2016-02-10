@@ -1,13 +1,17 @@
 #!/bin/sh
 
 set -e
-set -u
 
 #User params
 
 #Internal params
-RUN_CMD="echo Hello World!" 
+if [ -z "$COMMAND" ]; then
+	RUN_CMD="echo Hello World!, What where you expecting?" 
+else
+	RUN_CMD=${COMMAND}
+fi
 
+# Test for Interactiveness
 if test -t 0; then
   $RUN_CMD
 
